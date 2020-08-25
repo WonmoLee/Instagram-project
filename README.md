@@ -4,7 +4,11 @@
 
 ### 의존성 
 
-![image-20200820094651361](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20200820094651361.png)
+![blog](https://postfiles.pstatic.net/MjAyMDA4MjBfMTM5/MDAxNTk3ODgzNDIyMDYz.wZ5P4Ig9VYkJJLswXvdtkqY22qzxXBQjxrFGCIxQ33kg.X-uXGvkC2bYaAvyVxhxjPQsj61XGB1fa9iZ8UcQPRigg.PNG.getinthere/Screenshot_42.png?type=w773)
+
+
+
+![blog](<https://postfiles.pstatic.net/MjAyMDA4MjRfMTA2/MDAxNTk4MjMyNzA1OTgz.BQb6a4IR5Q22aWTKnwII-hIaHZx_N7-htey0g0Tp3ykg.5waKQmAt8kPgPKodIC_pfsP-4We7tYdrm3HKgbYOrlsg.JPEG.aryeong2/ERD_%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8_(1).jpg?type=w966>)
 
 
 
