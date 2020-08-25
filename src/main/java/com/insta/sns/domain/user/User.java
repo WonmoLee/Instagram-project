@@ -2,6 +2,7 @@ package com.insta.sns.domain.user;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -26,8 +27,10 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(unique = true)
 	private String username;
 	private String password;
+	private String email;
 	private String name;
 	private String website;
 	private String bio; // 자기 소개
