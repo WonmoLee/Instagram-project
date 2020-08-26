@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 					return;
 				}
 			})
-			.and()
+		.and()
 			.logout()
 			.logoutUrl("/auth/logout")
 			.logoutSuccessUrl("/auth/loginForm");
