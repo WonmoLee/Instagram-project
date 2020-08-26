@@ -32,6 +32,11 @@ spring:
     user:
       name: test
       password: 1234   
+          oauth2:      client:        registration:          facebook:
+           client-id: 320469892500773
+           client-secret: cb2b601b648074a6cdbed9e78e3c3f94
+           scope:            - email
+            - public_profile
 
 test:
   secret: 이원모
