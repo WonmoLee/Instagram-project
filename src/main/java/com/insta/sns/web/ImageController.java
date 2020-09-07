@@ -1,22 +1,39 @@
 package com.insta.sns.web;
 
-import javax.servlet.http.HttpSession;
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import com.insta.sns.config.auth.PrincipalDetails;
+import com.insta.sns.config.auth.LoginUserAnnotation;
 import com.insta.sns.config.auth.dto.LoginUser;
+import com.insta.sns.service.ImageService;
+import com.insta.sns.web.dto.ImageReqDto;
+
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor
 public class ImageController {
 	
+	private final ImageService imageService;
+	
 	@GetMapping({"", "/", "/image/feed"})
-	public String feed(@AuthenticationPrincipal PrincipalDetails principal,HttpSession session) {
-		System.out.println("@AuthenticationPrincipal : "+principal.getUser());
-		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
-		System.out.println("loginUser : "+loginUser);
+	public String feed(@LoginUserAnnotation LoginUser loginUser) {
 		return "image/feed";
 	}
+	
+	@GetMapping("/image/uploadForm")
+	public String imageUploadForm() {
+		return "image/image-upload";
+	}
+
+	@PostMapping("/image")
+	public String imageUpload(@LoginUserAnnotation LoginUser loginUser, ImageReqDto imageReqDto) {
+
+		imageService.사진업로드(imageReqDto, loginUser.getId());
+
+		return "redirect:/";
+	}
+	
 }

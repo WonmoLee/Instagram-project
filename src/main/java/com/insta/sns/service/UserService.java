@@ -3,19 +3,28 @@ package com.insta.sns.service;
 import java.util.List;
 import java.util.function.Supplier;
 
+<<<<<<< HEAD
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+=======
+>>>>>>> 6ce0676d695307c2bf7f54537e029d687aa873fb
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.insta.sns.config.auth.dto.LoginUser;
+<<<<<<< HEAD
+=======
+import com.insta.sns.config.handler.ex.MyUserIdNotFoundException;
+import com.insta.sns.domain.image.Image;
+>>>>>>> 6ce0676d695307c2bf7f54537e029d687aa873fb
 import com.insta.sns.domain.image.ImageRepository;
 import com.insta.sns.domain.user.User;
 import com.insta.sns.domain.user.UserRepository;
 import com.insta.sns.web.dto.JoinReqDto;
+import com.insta.sns.web.dto.UserProfileRespDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -38,6 +47,7 @@ public class UserService {
 	}
 	
 	// 읽기 전용 트랜잭션
+<<<<<<< HEAD
 	// (1) 변경 감지 연산을 하지 않음.
 	// (2) isolation(고립성)을 위해 Phantom read 문제가 일어나지 않음.
 	@Transactional(readOnly = true)
@@ -78,5 +88,45 @@ public class UserService {
 
 		return userProfileRespDto;
 	}
+=======
+		// (1) 변경 감지 연산을 하지 않음.
+		// (2) isolation(고립성)을 위해 Phantom read 문제가 일어나지 않음.
+		@Transactional(readOnly = true)
+		public UserProfileRespDto 회원프로필(int id, LoginUser loginUser) {
+
+			int imageCount;
+			int followerCount;
+			int followingCount;
+
+			User userEntity = userRepository.findById(id)
+					.orElseThrow(new Supplier<MyUserIdNotFoundException>() {
+						@Override
+						public MyUserIdNotFoundException get() {
+							return new MyUserIdNotFoundException();
+						}
+					});
+
+			// 1. 이미지들과 전체 이미지 카운트
+			List<Image> imagesEntity = imageRepository.findByUserId(id);
+			imageCount = imagesEntity.size();
+
+			// 2. 팔로우 수 (수정해야됨)
+			followerCount = 50;
+			followingCount = 100;
+
+			// 3. 최종마무리
+			UserProfileRespDto userProfileRespDto = 
+					UserProfileRespDto.builder()
+					.pageHost(id==loginUser.getId())
+					.followerCount(followerCount)
+					.followingCount(followingCount)
+					.imageCount(imageCount)
+					.user(userEntity)
+					.images(imagesEntity)
+					.build();
+
+			return userProfileRespDto;
+		}
+>>>>>>> 6ce0676d695307c2bf7f54537e029d687aa873fb
 }
 
